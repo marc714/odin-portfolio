@@ -1,0 +1,167 @@
+/* https://www.w3schools.com/howto/howto_css_image_responsive.asp */
+/* width:100 and height:auto means the image will scale up AND down. will get pixelated image */
+/* max-width:100 and height:auto means image will scale down. never up. */
+/* https://www.theodinproject.com/lessons/node-path-advanced-html-and-css-responsive-images#the-basics */
+
+body {
+    background: rgb(255, 255, 255);
+    width: auto;
+    margin: auto;
+}  
+
+header {
+    font-size: 5em;
+    background-image: url(https://source.unsplash.com/75xPHEQBmvA);
+    background-size: cover;
+
+}
+
+/* Max width */
+.project-container {
+    width: auto;
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    height: 400px;
+    background-color: rgb(171, 223, 223);
+    /* overflow: hidden; */
+    padding: 100px;
+    /* object-fit: cover; */
+}
+
+/* For auto resizing use img with below */
+
+/*
+.project-graphic img {
+    max-width: 100%;
+    max-height: 100%;
+}
+*/
+
+.first-project img {
+    max-height: 400px;
+    min-height: auto;
+}
+
+.second-project img {
+    object-fit: cover;
+    max-height: 400px;
+    /* overflow: hidden; */
+    border: 1px solid black;
+}
+
+.details-container {
+    min-width: 200px;
+}
+
+
+/* tablet */
+@media (max-width: 1000px) {
+    body {
+        background: blue;
+    }
+    .project-graphic img {
+        height: auto;
+        width: auto;
+    }
+}
+
+/* mobile */
+@media (max-width: 500px) {
+    body {
+        background: orange;
+    }
+    .project-container {
+        flex-direction: column;
+        /* padding: 10px; */
+    }
+    .project-graphic img {
+        height: auto;
+        width: auto;
+    }
+    .second-project {
+        background-color: rgb(68, 136, 196)
+    }
+}
+
+
+/* Animation */
+
+nav {
+    background-color: black;
+}
+
+.list {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+.link {
+    position: relative;
+    display: inline-block;
+    text-decoration: none;
+    color: #fff;
+    font-weight: 700;
+}
+
+.link::before,
+.link::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #00fffc;
+    transform: scaleX(0);
+    transition: transform 0.25s;
+}
+
+.link::before {
+    top: -3px;
+    transform-origin: left;
+}
+
+.link::after {
+    bottom: -3px;
+    transform-origin: right;
+}
+
+.link:hover::before,
+.link:hover::after,
+.active::before,
+.active::after {
+    transform: scaleX(1);
+}
+
+/* Ball */
+.container {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  #ball {
+    width: 100px;
+    height: 100px;
+    background-color: red;
+    border: 1px solid black;
+    border-radius: 50%;
+    animation-duration: 2s;
+    animation-name: change-color;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+  }
+  
+  @keyframes change-color {
+    from {
+      background-color: red;
+    }
+  
+    to {
+      background-color: green;
+    }
+  }
+  
